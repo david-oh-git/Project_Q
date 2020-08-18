@@ -1,20 +1,19 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion versions.compiled_sdk
     buildToolsVersion versions.build_tools
 
     defaultConfig {
-        applicationId "io.audioshinigami.projectq"
         minSdkVersion versions.min_sdk
         targetSdkVersion versions.target_sdk
         versionCode versions.version_code
         versionName versions.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -32,46 +31,21 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(dir: "libs", include: ["*.jar"])
     // Kotlin
     implementation deps.kotlin
-    //Kotlin Coroutines
-    implementation deps.kotlin_coroutine
-    // appcompat
-    implementation deps.appcompat
-    implementation deps.material
-    implementation deps.constraintlayout
     implementation deps.core_ktx
-    // Timber
-    implementation deps.timber
-    // Room DB
-    implementation deps.room_db
-    implementation deps.room_ktx
-    kapt deps.room_kapt
-    // Navigation
-    implementation deps.nav_fragments
-    implementation deps.nav_ui
-    // viewModel
-    implementation deps.viewmodel
-    // dagger hilt
-    implementation deps.dagger
-    kapt deps.dagger_kapt
+    implementation deps.appcompat
+
 
     // Unit test
     testImplementation deps.junit
     testImplementation deps.truth
-    // dagger testing
-    testImplementation deps.dagger_test
-    testImplementation deps.dagger_test_kapt
 
-    //
     androidTestImplementation deps.androidx_junit
-
-
+    androidTestImplementation deps.espresso_core
 
 }
