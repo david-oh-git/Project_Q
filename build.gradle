@@ -25,7 +25,9 @@ buildscript {
             junit: '4.13',
             espresso_core: '3.2.0',
             dagger_hilt: '2.28.3-alpha',
-            hamcrest: '2.2'
+            hamcrest: '2.2',
+            crashlytics: '17.2.1',
+            preference: '1.1.1'
     ]
     repositories {
         google()
@@ -36,6 +38,11 @@ buildscript {
         classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$versions.dagger_hilt"
+        classpath "com.google.gms:google-services:4.3.3"
+        // Crashlytics Gradle plugin.
+        classpath "com.google.firebase:firebase-crashlytics-gradle:2.2.0"
+        //      safe args
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -53,17 +60,26 @@ buildscript {
             room_kapt: "androidx.room:room-compiler:$versions.room_db",
             nav_fragments: "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
             nav_ui: "androidx.navigation:navigation-ui-ktx:$versions.navigation",
+            nav_testing: "androidx.navigation:navigation-testing:$versions.navigation",
             viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+            lifecycle_ext:  "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
+            livedata_ktx: "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle" ,
             junit: "junit:junit:$versions.junit",
             truth: "com.google.truth:truth:$versions.truth",
             androidx_junit: "androidx.test.ext:junit:$versions.androidx_junit",
             espresso_core: "androidx.test.espresso:espresso-core:$versions.espresso_core",
             kotlin_coroutine: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlin_coroutine",
+            coroutine_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlin_coroutine",
             dagger: "com.google.dagger:hilt-android:$versions.dagger_hilt",
             dagger_kapt: "com.google.dagger:hilt-android-compiler:$versions.dagger_hilt",
             dagger_test: "com.google.dagger:hilt-android-testing:$versions.dagger_hilt",
             dagger_test_kapt: "com.google.dagger:hilt-android-compiler:$versions.dagger_hilt",
-            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
+            crashlytics: "com.google.firebase:firebase-crashlytics:$versions.crashlytics",
+            preference: "androidx.preference:preference:$versions.preference" ,
+            coroutine_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.kotlin_coroutine",
+            hamcrest_lib: "org.hamcrest:hamcrest-library:$versions.hamcrest",
+            hamcrest: "org.hamcrest:hamcrest:$versions.hamcrest"
     ]
 }
 

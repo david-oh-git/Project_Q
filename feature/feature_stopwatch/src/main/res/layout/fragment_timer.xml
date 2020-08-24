@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="io.audioshinigami.feature_stopwatch.ui.timer.TimerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.timer.TimerFragment">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/timer_txtvw"
+            android:textSize="48sp"
+            app:layout_constraintTop_toTopOf="@id/guideline_top"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="@string/default_timer_value"
+            android:text="@{ vm.runningTime }" />
+
+        <com.google.android.material.button.MaterialButton
+            app:icon="@{ vm.timerIsRunning ? @drawable/ic_pause : @drawable/ic_play }"
+            android:onClick="@{ () -> vm.timerButtonAction() }"
+            android:id="@+id/timer_btn"
+            app:layout_constraintTop_toBottomOf="@id/timer_txtvw"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintDimensionRatio="1"
+            app:iconPadding="0dp"
+            android:padding="0dp"
+            app:iconGravity="textStart"
+            app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/guide_pad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_bottom"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/guide_pad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/guide_pad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/guide_pad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

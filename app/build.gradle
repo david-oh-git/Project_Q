@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion versions.compiled_sdk
@@ -15,6 +17,10 @@ android {
         versionName versions.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 
     buildTypes {
@@ -61,6 +67,10 @@ dependencies {
     // dagger hilt
     implementation deps.dagger
     kapt deps.dagger_kapt
+    // Crashlytics
+    implementation deps.crashlytics
+    implementation deps.preference
+
 
     // Unit test
     testImplementation deps.junit
@@ -72,6 +82,7 @@ dependencies {
     //
     androidTestImplementation deps.androidx_junit
 
-
+    // modules
+    implementation project(':feature:feature_stopwatch')
 
 }

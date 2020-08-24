@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion versions.compiled_sdk
@@ -23,6 +25,10 @@ android {
         }
     }
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -37,13 +43,27 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     // Kotlin
     implementation deps.kotlin
+    implementation deps.kotlin_coroutine
+    implementation deps.coroutine_android
     implementation deps.core_ktx
     implementation deps.appcompat
-
-
+    implementation deps.material
+    implementation deps.constraintlayout
+    implementation deps.livedata_ktx
+    implementation deps.lifecycle_ext
+    implementation deps.nav_fragments
+    // Crashlytics
+    implementation deps.crashlytics
+    implementation deps.preference
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    // Timber
+    implementation deps.timber
     // Unit test
     testImplementation deps.junit
     testImplementation deps.truth
+    testImplementation deps.coroutine_test
+    testImplementation deps.hamcrest_lib
+    testImplementation deps.hamcrest
 
     androidTestImplementation deps.androidx_junit
     androidTestImplementation deps.espresso_core

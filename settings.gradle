@@ -1,3 +1,4 @@
 include ':feature:feature_stopwatch'
-rootProject.name='Project Q'
 include ':app'
+rootProject.name='Project Q'
+
