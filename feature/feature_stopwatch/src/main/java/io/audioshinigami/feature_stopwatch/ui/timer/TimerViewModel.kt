@@ -38,13 +38,13 @@ class TimerViewModel(
     }
 
     fun reset() = scope.launch {
-        watch.reset()
+        watch.pause()
+        _timerIsRunning.postValue(false)
+        _runningTime.postValue(0L)
         // TODO also save start time to 0L
     }
 
     override fun updateTime(value: Long) {
-        Timber.d("running time : ${_runningTime.value}")
-        Timber.d("time value added: $value")
         val newValue = (_runningTime.value ?: 0L ) + value
         _runningTime.postValue(newValue)
     }
@@ -60,7 +60,7 @@ class TimerViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        // TODO also save start time
+        // TODO also save time
         scope.cancel()
     }
 

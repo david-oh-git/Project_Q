@@ -5,7 +5,8 @@ import java.util.concurrent.TimeUnit
 /**
  * @author David O
  * Converter object to convert milliseconds to readable time format hh:mm:ss
- * @param milliSecond elapsed time in milli seconds
+ *  milliSecond elapsed time in milli seconds.
+ * a neat tricks thanks to the gods of stackoverflow
  */
 
 object TimeUtil {
